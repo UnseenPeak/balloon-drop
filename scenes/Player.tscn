@@ -5,7 +5,7 @@
 [ext_resource path="res://textures/player_placeholder.png" type="Texture" id=3]
 [ext_resource path="res://Player.gd" type="Script" id=4]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.02843, 12.0257 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -19,7 +19,7 @@ scale = Vector2( 1, 1.5 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="BalloonHolder" type="Node2D" parent="."]
 position = Vector2( 0, -23 )
