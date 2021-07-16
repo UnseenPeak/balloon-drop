@@ -7,6 +7,8 @@ var has_balloon = false
 const SPEED = 200
 const GRAVITY = 30
 
+signal balloon_released
+
 
 func _ready():
 	screen_size = get_viewport().size
@@ -32,6 +34,7 @@ func _process(delta):
 		new_balloon.position = $BalloonHolder.global_position
 		$BalloonHolder.get_node("Sprite").visible = false
 		has_balloon = false
+		emit_signal("balloon_released")
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 	velocity.x = lerp(velocity.x, 0, 0.25)
