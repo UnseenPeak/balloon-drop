@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://textures/cement_placeholder.png" type="Texture" id=1]
 [ext_resource path="res://textures/player_placeholder.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://HoseBib.gd" type="Script" id=8]
 [ext_resource path="res://textures/balloon_placeholder.png" type="Texture" id=9]
 [ext_resource path="res://sounds/drop.mp3" type="AudioStream" id=10]
+[ext_resource path="res://Main.gd" type="Script" id=11]
+[ext_resource path="res://sounds/level_music.mp3" type="AudioStream" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -105,6 +107,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 extents = Vector2( 8.02843, 12.0257 )
 
 [node name="Main" type="Node2D"]
+script = ExtResource( 11 )
 
 [node name="TopTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -200,6 +203,9 @@ texture = ExtResource( 2 )
 position = Vector2( 225, 247 )
 scale = Vector2( 1, 1.10937 )
 texture = ExtResource( 2 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 
 [connection signal="body_entered" from="HoseBib" to="HoseBib" method="_on_HoseBib_body_entered"]
 [connection signal="body_exited" from="HoseBib" to="HoseBib" method="_on_HoseBib_body_exited"]
