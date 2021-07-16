@@ -3,7 +3,7 @@ extends KinematicBody2D
 var screen_size
 var velocity = Vector2(0,0)
 var balloon = preload("res://scenes/Balloon.tscn")
-var hasBalloon = false
+var has_balloon = false
 const SPEED = 200
 const GRAVITY = 30
 
@@ -16,7 +16,7 @@ func _ready():
 	hose_bib.connect("balloon_filled",self,"get_balloon")
 	
 func get_balloon():
-	hasBalloon = true
+	has_balloon = true
 	$BalloonHolder.get_node("Sprite").visible = true
 
 func _process(delta):
@@ -25,13 +25,13 @@ func _process(delta):
 		velocity.x = SPEED
 	if Input.is_action_pressed("left"):
 		velocity.x = -SPEED
-	if Input.is_action_just_pressed("drop") && hasBalloon:
+	if Input.is_action_just_pressed("drop") && has_balloon:
 		$AudioStreamPlayer2D.play()
 		var new_balloon = balloon.instance()
 		get_tree().get_root().get_node("Main").add_child(new_balloon)
 		new_balloon.position = $BalloonHolder.global_position
 		$BalloonHolder.get_node("Sprite").visible = false
-		pass
+		has_balloon = false
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 	velocity.x = lerp(velocity.x, 0, 0.25)

@@ -19,7 +19,6 @@ func _process(delta):
 		$ProgressBar.value = fill
 		if fill >= 100:
 			emit_signal("balloon_filled")
-#			send signal to player to have balloon
 
 			filling = false
 	fill = clamp(fill, 0, 100)
