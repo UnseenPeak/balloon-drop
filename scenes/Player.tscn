@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://sounds/drop.mp3" type="AudioStream" id=1]
+[ext_resource path="res://textures/balloon_placeholder.png" type="Texture" id=2]
+[ext_resource path="res://textures/player_placeholder.png" type="Texture" id=3]
+[ext_resource path="res://Player.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8.02843, 12.0257 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 150, 36 )
+collision_mask = 4
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 4.76837e-07 )
+scale = Vector2( 1, 1.5 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="BalloonHolder" type="Node2D" parent="."]
+position = Vector2( 0, -23 )
+
+[node name="Sprite" type="Sprite" parent="BalloonHolder"]
+visible = false
+position = Vector2( 0, 2 )
+texture = ExtResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 1 )
