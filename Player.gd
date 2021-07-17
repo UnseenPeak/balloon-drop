@@ -22,11 +22,13 @@ func get_balloon():
 	$BalloonHolder.get_node("Sprite").visible = true
 
 func _process(delta):
-	
+	get_tree().get_root().get_node("Main").get_node("WetList").visible = false
 	if Input.is_action_pressed("right"):
 		velocity.x = SPEED
 	if Input.is_action_pressed("left"):
 		velocity.x = -SPEED
+	if Input.is_action_pressed("tab"):
+		get_tree().get_root().get_node("Main").get_node("WetList").visible = true
 	if Input.is_action_just_pressed("drop") && has_balloon:
 		$AudioStreamPlayer2D.play()
 		var new_balloon = balloon.instance()
