@@ -12,7 +12,6 @@ signal balloon_released
 
 func _ready():
 	screen_size = get_viewport().size
-	print(screen_size.x)
 	
 	var hose_bib = get_tree().get_root().find_node("HoseBib",true,false)
 	hose_bib.connect("balloon_filled",self,"get_balloon")
