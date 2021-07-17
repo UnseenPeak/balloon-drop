@@ -15,9 +15,13 @@ func _ready():
 func _process(delta):
 #	Fill = Key E
 	if filling && Input.is_action_pressed("fill"):
+		if not $BalloonFilling.is_playing():
+			$BalloonFilling.play()
 		fill += 1
-		$ProgressBar.value = fill
+		$BalloonSprite.scale = Vector2(fill / 100.0, fill / 100.0)
 		if fill >= 100:
+			$BalloonSprite.scale = Vector2(0,0)
+			$BalloonFilling.stop()
 			emit_signal("balloon_filled")
 
 			filling = false
@@ -38,5 +42,5 @@ func _on_HoseBib_body_entered(body):
 func _on_HoseBib_body_exited(body):
 	filling = false
 	fill = 0
-	$ProgressBar.value = fill
 	$Label.visible = false
+	$BalloonFilling.stop()

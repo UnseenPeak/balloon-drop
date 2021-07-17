@@ -6,11 +6,14 @@ var balloon = preload("res://scenes/Balloon.tscn")
 var has_balloon = false
 const SPEED = 200
 const GRAVITY = 30
+var rng
 
 signal balloon_released
 
 
 func _ready():
+	randomize()
+	rng = RandomNumberGenerator.new()
 	screen_size = get_viewport().size
 	
 	var hose_bib = get_tree().get_root().find_node("HoseBib",true,false)
@@ -22,10 +25,15 @@ func get_balloon():
 
 func _process(delta):
 	get_tree().get_root().get_node("Main").get_node("WetList").visible = false
+	$Footstep.pitch_scale = rng.randf_range(0.98, 1.2)
 	if Input.is_action_pressed("right"):
 		velocity.x = SPEED
+		if not $Footstep.is_playing():
+			$Footstep.play()
 	if Input.is_action_pressed("left"):
 		velocity.x = -SPEED
+		if not $Footstep.is_playing():
+			$Footstep.play()
 	if Input.is_action_pressed("tab"):
 		get_tree().get_root().get_node("Main").get_node("WetList").visible = true
 	if Input.is_action_just_pressed("drop") && has_balloon:
