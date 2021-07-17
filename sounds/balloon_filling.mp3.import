@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/balloon_filling.mp3-e0a217c994258c434c2cf3eebc772896.mp3str"
+
+[deps]
+
+source_file="res://sounds/balloon_filling.mp3"
+dest_files=[ "res://.import/balloon_filling.mp3-e0a217c994258c434c2cf3eebc772896.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

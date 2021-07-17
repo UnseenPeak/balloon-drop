@@ -48,7 +48,7 @@ func _process(delta):
 				state = choose([IDLE, MOVE])
 		MOVE:
 			speed = 50
-#			$AnimatedSprite.play("walking")
+			$AnimatedSprite.play("walking")
 #			velocity = move_and_slide(direction * speed, Vector2.UP)
 	velocity = direction * speed
 	velocity.y = 10

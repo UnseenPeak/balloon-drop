@@ -44,3 +44,7 @@ func spawn_targets():
 		text_rect.target_id = target.get_instance_id()
 		$WetList/TextureRect/HBoxContainer.add_child(text_rect)
 #		get_instance_id 
+
+
+func _on_Timer_timeout():
+	pass # Replace with function body.
