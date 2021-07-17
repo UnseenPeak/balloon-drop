@@ -31,11 +31,16 @@ func spawn_targets():
 		target = targets[i].instance()
 		add_child(target)
 		target.is_target = true
-		target.position = Vector2(100 * i, 100)
+#		y 238 
+#		x 12 - 276
+#
+#		y 205
+#		x 330 - 466
+		target.position = Vector2(randi()%276+12, 238)
 		var text_rect = wet_list_target.instance()
 		text_rect.texture = target.get_node("Sprite").texture
 		text_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		text_rect.rect_scale = Vector2(2,2)
+		call_deferred("set",text_rect.rect_scale, Vector2(2,2))
 		text_rect.target_id = target.get_instance_id()
 		$WetList/TextureRect/HBoxContainer.add_child(text_rect)
 #		get_instance_id 
