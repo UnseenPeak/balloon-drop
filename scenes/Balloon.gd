@@ -16,3 +16,7 @@ func _process(delta):
 		queue_free()
 	velocity = move_and_slide(velocity, Vector2.UP)
 
+
+func _on_Area2D_area_entered(area):
+	print(area.get_parent().is_target)
+	print(area.get_parent().get_instance_id())
