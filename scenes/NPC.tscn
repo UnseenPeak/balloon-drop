@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://textures/npc_placeholder.png" type="Texture" id=2]
@@ -7,12 +7,49 @@
 [ext_resource path="res://textures/npc_sprite_wet_placeholder.png" type="Texture" id=5]
 [ext_resource path="res://textures/npc_sprite_hit_new_placeholder.png" type="Texture" id=6]
 [ext_resource path="res://sounds/hit_1.wav" type="AudioStream" id=7]
+[ext_resource path="res://textures/npc_sprite_sitting_placeholder.png" type="Texture" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 12.6667 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 24, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 24, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 8 )
 region = Rect2( 16, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=12]
@@ -179,45 +216,12 @@ region = Rect2( 64, 96, 16, 24 )
 atlas = ExtResource( 6 )
 region = Rect2( 80, 96, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 3 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 24, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 3 )
-region = Rect2( 16, 24, 16, 24 )
-
-[sub_resource type="SpriteFrames" id=10]
+[sub_resource type="SpriteFrames" id=53]
 animations = [ {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
-"loop": false,
-"name": "hit",
-"speed": 12.0
 }, {
 "frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
@@ -228,13 +232,22 @@ animations = [ {
 "loop": true,
 "name": "walking",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "seat",
+"speed": 2.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
+"loop": false,
+"name": "hit",
+"speed": 12.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=54]
 extents = Vector2( 8, 12 )
 
-[sub_resource type="Animation" id=53]
-resource_name = "hit"
+[sub_resource type="Animation" id=55]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
@@ -267,9 +280,6 @@ scale = Vector2( 1, 1.5 )
 collision_layer = 18
 collision_mask = 8
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Area2D" type="Area2D" parent="."]
 gravity = 0.0
@@ -281,15 +291,15 @@ position = Vector2( 0, -0.666672 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 10 )
-animation = "hit"
+frames = SubResource( 53 )
+animation = "seat"
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.666672 )
-shape = SubResource( 11 )
+shape = SubResource( 54 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
@@ -301,7 +311,25 @@ volume_db = -6.072
 pitch_scale = 1.16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hit = SubResource( 53 )
+anims/hit = SubResource( 55 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -18.0
+margin_top = -22.6667
+margin_right = 22.0
+margin_bottom = -8.66667
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 11.0
+margin_top = -11.3333
+margin_right = 51.0
+margin_bottom = 2.66667
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

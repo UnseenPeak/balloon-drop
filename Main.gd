@@ -1,10 +1,8 @@
 extends Node2D
 
-
 export(Array, PackedScene) var targets
 
 var wet_list_target = preload("res://scenes/WetListTarget.tscn")
-
 
 func _ready():
 	spawn_targets()
@@ -43,7 +41,6 @@ func spawn_targets():
 		call_deferred("set",text_rect.rect_scale, Vector2(2,2))
 		text_rect.target_id = target.get_instance_id()
 		$WetList/TextureRect/HBoxContainer.add_child(text_rect)
-#		get_instance_id 
 
 
 func _on_Timer_timeout():
