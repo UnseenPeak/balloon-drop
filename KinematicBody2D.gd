@@ -26,11 +26,13 @@ var all_hit_sounds = []
 
 signal target_hit
 signal initiate_talking
+signal locate_closets_butler
 
 var npc_state = state.walking
 
 
 func _ready():
+	speed = rand_range(40,60)
 	self.connect("target_hit", get_tree().get_root().get_node("Main"), "target_hit", [get_instance_id()])
 	all_hit_sounds = [ hit_1, hit_2, hit_3]
 	randomize()
@@ -39,8 +41,8 @@ func _ready():
 	pass
 	
 func _physics_process(delta):
-	$Label.text = str(npc_state)
-	$Label2.text = str(is_talking)
+#	$Label.text = str(npc_state)
+#	$Label2.text = str(is_talking)
 	process_states()
 	
 func enter_state(pass_state, talking_time):
@@ -121,12 +123,15 @@ func initiate_talking(time):
 
 func _on_Area2D_body_entered(body):
 	if(body.name == "Balloon"):
+		body.get_node("Area2D/CollisionShape2D2").disabled = true
 		if is_target:
 			emit_signal("target_hit")
+		self.connect("locate_closets_butler", get_tree().get_root().get_node("Main").get_node("ButlerSystem"), "locate_butler", [global_position])
+		emit_signal("locate_closets_butler")
 		enter_state(state.wet, null)
 	if(body.is_in_group("npc")):
 		if(!body.is_talking && !body.is_sitting):
-			if(rand_range(0,10) > 8):
+			if(rand_range(0,50) > 49):
 				current_talking_to = body
 				enter_state(state.talking, null)
 		

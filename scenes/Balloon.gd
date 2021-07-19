@@ -2,8 +2,10 @@ extends KinematicBody2D
 
 var thrown = false
 var velocity = Vector2(0, 200)
+var game_manager
 
 func _ready():
+	game_manager = get_tree().get_root().get_node("GameManager")
 	thrown = false
 
 func _process(delta):
@@ -18,5 +20,8 @@ func _process(delta):
 
 
 func _on_Area2D_area_entered(area):
-	print(area.get_parent().is_target)
-	print(area.get_parent().get_instance_id())
+	if !area.get_parent().is_target:
+		game_manager.non_targets_hit += 1
+	if area.get_parent().is_in_group("butler"):
+		game_manager.butler_hit = true	
+	
