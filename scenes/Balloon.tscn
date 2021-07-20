@@ -62,6 +62,7 @@ collision_mask = 16
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.879999, 0.88 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -76,6 +77,8 @@ collision_layer = 10
 collision_mask = 16
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2( 0.759998, 0.8 )
 shape = SubResource( 1 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

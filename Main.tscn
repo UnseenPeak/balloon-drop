@@ -1,18 +1,24 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://textures/cement_placeholder.png" type="Texture" id=1]
-[ext_resource path="res://scenes/NPC.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/npcs/NPC.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Camera2D.gd" type="Script" id=3]
 [ext_resource path="res://textures/cement_blank_placeholder.png" type="Texture" id=4]
 [ext_resource path="res://textures/cement_party_floor_placeholder.png" type="Texture" id=5]
 [ext_resource path="res://textures/cement_stairs_placeholder.png" type="Texture" id=6]
 [ext_resource path="res://scenes/HoseBib.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/UmbrellaSeating.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://textures/umbrella.png" type="Texture" id=10]
+[ext_resource path="res://scenes/npcs/ButlerNPC.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Main.gd" type="Script" id=11]
 [ext_resource path="res://sounds/level_music.mp3" type="AudioStream" id=12]
 [ext_resource path="res://textures/wet_list.png" type="Texture" id=13]
 [ext_resource path="res://textures/wet_list_text.png" type="Texture" id=14]
+[ext_resource path="res://scenes/npcs/NPC3.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/ButlerSystem.tscn" type="PackedScene" id=17]
+[ext_resource path="res://game_over.png" type="Texture" id=18]
+[ext_resource path="res://GameOver.gd" type="Script" id=19]
+[ext_resource path="res://textures/test_background_again.png" type="Texture" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -104,7 +110,13 @@ points = PoolVector2Array( 16, 16, 0, 16, 16, 0, 16, 0 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 11 )
-targets = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
+targets = [ ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ) ]
+non_targets = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 781.453, 131.355 )
+scale = Vector2( 1.90228, 1.90228 )
+texture = ExtResource( 20 )
 
 [node name="TopTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 4 )
@@ -112,7 +124,7 @@ cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_layer = 4
 format = 1
-tile_data = PoolIntArray( 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 196636, 0, 0, 196637, 0, 0, 393261, 2, 0 )
+tile_data = PoolIntArray( 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 196636, 0, 0, 196637, 0, 0, 196638, 0, 0, 196639, 0, 0, 196640, 0, 0, 196641, 0, 0, 196642, 0, 0, 196643, 0, 0, 196644, 0, 0, 196645, 0, 0, 196646, 0, 0, 196647, 0, 0, 196648, 0, 0, 196649, 0, 0, 196650, 0, 0, 196651, 0, 0, 196652, 0, 0, 196653, 0, 0, 196654, 0, 0 )
 
 [node name="BottomTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 4 )
@@ -121,47 +133,48 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_layer = 24
 collision_mask = 2
 format = 1
-tile_data = PoolIntArray( 393261, 2, 0, 917523, 3, 0, 917524, 1, 0, 917525, 1, 0, 917526, 1, 0, 917527, 1, 0, 917528, 1, 0, 917529, 1, 0, 917530, 1, 0, 917531, 1, 0, 917532, 1, 0, 917533, 1, 0, 983058, 3, 0, 983059, 2, 0, 983060, 2, 0, 983061, 2, 0, 983062, 2, 0, 983063, 2, 0, 983064, 2, 0, 983065, 2, 0, 983066, 2, 0, 983067, 2, 0, 983068, 2, 0, 983069, 2, 0, 1048576, 1, 0, 1048577, 1, 0, 1048578, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 1, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 1, 0, 1048587, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048597, 1, 0, 1048598, 1, 0, 1048599, 1, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0 )
+tile_data = PoolIntArray( 852014, 1, 0, 917523, 3, 0, 917524, 1, 0, 917525, 1, 0, 917526, 1, 0, 917527, 1, 0, 917528, 1, 0, 917529, 1, 0, 917530, 1, 0, 917531, 1, 0, 917532, 1, 0, 917533, 1, 0, 917534, 1, 0, 917535, 1, 0, 917536, 1, 0, 917537, 1, 0, 917538, 1, 0, 917539, 1, 0, 917540, 1, 0, 917541, 1, 0, 917542, 1, 0, 917543, 1, 0, 917544, 1, 0, 917545, 1, 0, 917546, 1, 0, 917547, 1, 0, 917548, 1, 0, 917549, 1, 0, 917550, 1, 0, 1048575, 1, 0, 983058, 3, 0, 983059, 2, 0, 983060, 2, 0, 983061, 2, 0, 983062, 2, 0, 983063, 2, 0, 983064, 2, 0, 983065, 2, 0, 983066, 2, 0, 983067, 2, 0, 983068, 2, 0, 983069, 2, 0, 983070, 2, 0, 983071, 2, 0, 983072, 2, 0, 983073, 2, 0, 983074, 2, 0, 983075, 2, 0, 983076, 2, 0, 983077, 2, 0, 983078, 2, 0, 983079, 2, 0, 983080, 2, 0, 983081, 2, 0, 983082, 2, 0, 983083, 2, 0, 983084, 2, 0, 983085, 2, 0, 983086, 2, 0, 1114111, 1, 0, 1048576, 1, 0, 1048577, 1, 0, 1048578, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 1, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 1, 0, 1048587, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048597, 1, 0, 1048598, 1, 0, 1048599, 1, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 1048606, 1, 0, 1048607, 2, 0, 1048608, 2, 0, 1048609, 2, 0, 1048610, 2, 0, 1048611, 2, 0, 1048612, 2, 0, 1048613, 2, 0, 1048614, 2, 0, 1048615, 2, 0, 1048616, 2, 0, 1048617, 2, 0, 1048618, 2, 0, 1048619, 2, 0, 1048620, 2, 0, 1048621, 2, 0, 1048622, 2, 0 )
 
 [node name="HoseBib" parent="." instance=ExtResource( 7 )]
 
 [node name="Player" parent="." instance=ExtResource( 9 )]
+position = Vector2( 300, 36 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 90, 100 )
+current = true
+limit_left = 0
+limit_top = -100000000
+limit_right = 752
+smoothing_enabled = true
+script = ExtResource( 3 )
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-volume_db = -5.0
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 240, 136 )
-current = true
-script = ExtResource( 3 )
+[node name="UmbrellaSeating" parent="." instance=ExtResource( 8 )]
 
-[node name="Umbrella" type="Node2D" parent="."]
-position = Vector2( 95, 224 )
+[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 784, 540 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 102, 224 )
-collision_layer = 16
-collision_mask = 32
-__meta__ = {
-"_edit_group_": true
-}
+[node name="UmbrellaSeating2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 356, 192 )
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 10 )
+[node name="Camera2D2" type="Camera2D" parent="."]
+position = Vector2( 152, 197 )
+zoom = Vector2( 0.5, 0.5 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2( 1, 0 )
-scale = Vector2( 1, 0.9375 )
-polygon = PoolVector2Array( -3, -28.3333, -27, -5.93333, 24, -7, 4, -28.3333 )
+[node name="ButlerNPC" parent="." instance=ExtResource( 10 )]
+
+[node name="ButlerNPC2" parent="." instance=ExtResource( 10 )]
+
+[node name="ButlerSystem" parent="." instance=ExtResource( 17 )]
 
 [node name="WetList" type="Control" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 481.0
-margin_bottom = 271.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -171,10 +184,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -120.5
-margin_top = -63.5
-margin_right = 130.5
-margin_bottom = 62.5
+margin_left = 315.0
+margin_top = 220.0
+margin_right = 471.0
+margin_bottom = 255.0
 texture = ExtResource( 13 )
 expand = true
 __meta__ = {
@@ -182,10 +195,11 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="WetList/TextureRect"]
-margin_left = 28.0
-margin_top = 21.0
-margin_right = 96.0
-margin_bottom = 42.0
+margin_left = 17.0
+margin_top = 3.0
+margin_right = 46.0
+margin_bottom = 12.0
+rect_scale = Vector2( 1.24905, 0.745663 )
 texture = ExtResource( 14 )
 expand = true
 __meta__ = {
@@ -195,12 +209,69 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="WetList/TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 16.0
-margin_top = 45.0
-margin_right = -15.0
-margin_bottom = -28.0
+margin_left = 14.0
+margin_top = 8.0
+margin_right = -11.0
+margin_bottom = -7.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_constants/separation = 50
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="GUI"]
+margin_left = 444.0
+margin_top = 6.0
+margin_right = 484.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 1, 0.176471, 0.176471, 1 )
+text = "tes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Control" parent="GUI"]
+visible = false
+margin_right = 479.0
+margin_bottom = 269.0
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="GUI/GameOver"]
+anchor_left = 0.294
+anchor_top = 0.293
+anchor_right = 0.708
+anchor_bottom = 0.5
+margin_left = 0.173996
+margin_top = 0.182999
+margin_right = 0.453979
+margin_bottom = -1.707
+texture = ExtResource( 18 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="GUI/GameOver"]
+margin_left = 211.0
+margin_top = 139.0
+margin_right = 268.0
+margin_bottom = 159.0
+text = "Rety"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="GUI/GameOver/Button" to="GUI/GameOver" method="_on_Button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
