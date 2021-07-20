@@ -14,11 +14,11 @@
 [ext_resource path="res://sounds/level_music.mp3" type="AudioStream" id=12]
 [ext_resource path="res://textures/wet_list.png" type="Texture" id=13]
 [ext_resource path="res://textures/wet_list_text.png" type="Texture" id=14]
-[ext_resource path="res://scenes/npcs/NPC2.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/npcs/NPC3.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/ButlerSystem.tscn" type="PackedScene" id=17]
 [ext_resource path="res://game_over.png" type="Texture" id=18]
 [ext_resource path="res://GameOver.gd" type="Script" id=19]
+[ext_resource path="res://textures/test_background_again.png" type="Texture" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -110,8 +110,13 @@ points = PoolVector2Array( 16, 16, 0, 16, 16, 0, 16, 0 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 11 )
-targets = [ ExtResource( 15 ), ExtResource( 16 ) ]
+targets = [ ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ) ]
 non_targets = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 781.453, 131.355 )
+scale = Vector2( 1.90228, 1.90228 )
+texture = ExtResource( 20 )
 
 [node name="TopTileMap" type="TileMap" parent="."]
 tile_set = SubResource( 4 )
@@ -166,12 +171,10 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="ButlerSystem" parent="." instance=ExtResource( 17 )]
 
 [node name="WetList" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 11.0
-margin_right = 5.0
-margin_bottom = 11.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -210,6 +213,8 @@ margin_left = 14.0
 margin_top = 8.0
 margin_right = -11.0
 margin_bottom = -7.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_constants/separation = 50
 alignment = 1
 __meta__ = {
@@ -217,6 +222,17 @@ __meta__ = {
 }
 
 [node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="GUI"]
+margin_left = 444.0
+margin_top = 6.0
+margin_right = 484.0
+margin_bottom = 20.0
+custom_colors/font_color = Color( 1, 0.176471, 0.176471, 1 )
+text = "tes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GameOver" type="Control" parent="GUI"]
 visible = false
@@ -253,4 +269,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="pressed" from="GUI/GameOver/Button" to="GUI/GameOver" method="_on_Button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

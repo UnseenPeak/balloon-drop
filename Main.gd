@@ -4,13 +4,16 @@ export(Array, PackedScene) var targets
 export(Array, PackedScene) var non_targets
 
 var wet_list_target = preload("res://scenes/WetListTarget.tscn")
+var game_manager
 
 func _ready():
 	spawn_targets()
 	spawn_non_targets()
+	game_manager = get_tree().get_root().get_node("GameManager")
 	$MusicPlayer.play()
 
 func target_hit(npc_id):
+	game_manager.inc_time()
 	remove_target(npc_id)
 
 func remove_target(npc_id):
@@ -23,10 +26,10 @@ func remove_target(npc_id):
 
 func _process(delta):
 	pass
-	
+
 func spawn_non_targets():
 	var non_target
-	for i in 16:
+	for i in 12:
 		non_target = non_targets[0].instance()
 		add_child(non_target)
 		
@@ -55,6 +58,3 @@ func spawn_targets():
 		text_rect.target_id = target.get_instance_id()
 		$WetList/TextureRect/HBoxContainer.add_child(text_rect)
 
-
-func _on_Timer_timeout():
-	pass # Replace with function body.

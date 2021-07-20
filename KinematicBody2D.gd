@@ -29,12 +29,14 @@ signal initiate_talking
 signal locate_closets_butler
 
 var npc_state = state.walking
+var game_manager
 
 
 func _ready():
 	speed = rand_range(40,60)
 	self.connect("target_hit", get_tree().get_root().get_node("Main"), "target_hit", [get_instance_id()])
 	all_hit_sounds = [ hit_1, hit_2, hit_3]
+	game_manager = get_tree().get_root().get_node("GameManager")
 	randomize()
 	
 	enter_state(state.walking, null)
@@ -123,9 +125,10 @@ func initiate_talking(time):
 
 func _on_Area2D_body_entered(body):
 	if(body.name == "Balloon"):
-		body.get_node("Area2D/CollisionShape2D2").disabled = true
 		if is_target:
 			emit_signal("target_hit")
+		else:
+			game_manager.dec_time()
 		self.connect("locate_closets_butler", get_tree().get_root().get_node("Main").get_node("ButlerSystem"), "locate_butler", [global_position])
 		emit_signal("locate_closets_butler")
 		enter_state(state.wet, null)
