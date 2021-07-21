@@ -10,7 +10,6 @@ func _ready():
 	spawn_targets()
 	spawn_non_targets()
 	game_manager = get_tree().get_root().get_node("GameManager")
-	$MusicPlayer.play()
 
 func target_hit(npc_id):
 	game_manager.inc_time()
@@ -25,6 +24,8 @@ func remove_target(npc_id):
 	pass
 
 func _process(delta):
+	if !game_manager.is_game_over:
+		get_node("GUI/Label").text = str(game_manager.seconds)
 	pass
 
 func spawn_non_targets():
