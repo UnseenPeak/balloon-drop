@@ -16,7 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GameManager="*res://GameManager.gd"
+GameManager="*res://scenes/GameManager.tscn"
 
 [display]
 
