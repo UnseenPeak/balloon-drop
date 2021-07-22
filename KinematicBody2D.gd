@@ -29,7 +29,7 @@ signal target_hit
 signal initiate_talking
 signal locate_closets_butler
 
-var npc_state = state.walking
+var npc_state = state.idle
 var game_manager
 
 
@@ -39,8 +39,6 @@ func _ready():
 	all_hit_sounds = [ hit_1, hit_2, hit_3]
 	game_manager = get_tree().get_root().get_node("GameManager")
 	randomize()
-	
-	enter_state(state.walking, null)
 	pass
 	
 func _physics_process(_delta):
@@ -49,72 +47,73 @@ func _physics_process(_delta):
 	process_states()
 	
 func enter_state(pass_state, talking_time):
-	if(npc_state != pass_state):
-		leave_state(npc_state)
-		npc_state = pass_state
-		
-	if(pass_state == state.walking):
-		if(rand_range(0,2) > 1):
-			direction = Vector2.LEFT
-			$AnimatedSprite.flip_h = true
-		else:
-			direction = Vector2.RIGHT
-			$AnimatedSprite.flip_h = false
-		$AnimatedSprite.play("walking")
-		$Timer.start(rand_range(2,5))
-		
-	if(pass_state == state.idle):
-		$AnimatedSprite.play("idle")
-		
-	if(pass_state == state.wet):
-		$Timer.start(5)
-		$AudioStreamPlayer2D.stream = all_hit_sounds[randi() % all_hit_sounds.size()]
-		$AudioStreamPlayer2D.play()
-		print(game_manager.toast_height)
-		if is_target:		
-			$HitTimer.start(.3)
-			$Time/ShowTime.text = str("+5s")
-			$Time/ShowTimeText.text = str("CORRECT TARGET")
-			$Time/ShowTime.modulate = Color(.2,.9,.2)
-			$Time/ShowTimeText.modulate = Color(.2,.9,.2)
-		else:
-			$Time/ShowTime.modulate = Color(.9,.2,.2)
-			$Time/ShowTimeText.modulate = Color(.9,.2,.2)
-		$Time/ShowTime.visible = true
-		$Time/ShowTimeText.visible = true
-		$AnimationPlayer.play("hit")
-		$AnimatedSprite.play("hit")
-		$ShowTimeAnimation.play("fade")
-		yield($AnimatedSprite, "animation_finished" )
-		$Time/ShowTime.visible = false
-		queue_free()
-		
-	if(pass_state == state.sitting):
-		is_sitting = true
-		$AnimatedSprite.play("sitting")
-		$Timer.start(rand_range(2,5))
-		
-	if(pass_state == state.talking):
-		$AnimatedSprite.play("talking")
-		is_talking = true
-		if talking_time:
-			$Timer.start(talking_time)
-		else:
-			talking_time = rand_range(2,5)
-			$Timer.start(talking_time)
-		
-		self.connect("initiate_talking", get_tree().get_root().get_node("Main").get_node(current_talking_to.name), "initiate_talking", [talking_time])
-		emit_signal("initiate_talking")
-		
-	if(pass_state == state.receive_talking):
-		$AnimatedSprite.play("talking")
-		is_talking = true
-		if talking_time:
-			$Timer.start(talking_time)
-		else:
-			talking_time = rand_range(2,5)
-			$Timer.start(talking_time)		
-		
+	if !game_manager.is_intro:
+		if(npc_state != pass_state):
+			leave_state(npc_state)
+			npc_state = pass_state
+			
+		if(pass_state == state.walking):
+			if(rand_range(0,2) > 1):
+				direction = Vector2.LEFT
+				$AnimatedSprite.flip_h = true
+			else:
+				direction = Vector2.RIGHT
+				$AnimatedSprite.flip_h = false
+			$AnimatedSprite.play("walking")
+			$Timer.start(rand_range(2,5))
+			
+		if(pass_state == state.idle):
+			$AnimatedSprite.play("idle")
+			
+		if(pass_state == state.wet):
+			$Timer.start(5)
+			$AudioStreamPlayer2D.stream = all_hit_sounds[randi() % all_hit_sounds.size()]
+			$AudioStreamPlayer2D.play()
+			print(game_manager.toast_height)
+			if is_target:		
+				$HitTimer.start(.3)
+				$Time/ShowTime.text = str("")
+				$Time/ShowTimeText.text = str("CORRECT TARGET")
+				$Time/ShowTime.modulate = Color(.2,.9,.2)
+				$Time/ShowTimeText.modulate = Color(.2,.9,.2)
+			else:
+				$Time/ShowTime.modulate = Color(.9,.2,.2)
+				$Time/ShowTimeText.modulate = Color(.9,.2,.2)
+			$Time/ShowTime.visible = true
+			$Time/ShowTimeText.visible = true
+			$AnimationPlayer.play("hit")
+			$AnimatedSprite.play("hit")
+			$ShowTimeAnimation.play("fade")
+			yield($AnimatedSprite, "animation_finished" )
+			$Time/ShowTime.visible = false
+			queue_free()
+			
+		if(pass_state == state.sitting):
+			is_sitting = true
+			$AnimatedSprite.play("sitting")
+			$Timer.start(rand_range(2,5))
+			
+		if(pass_state == state.talking):
+			$AnimatedSprite.play("talking")
+			is_talking = true
+			if talking_time:
+				$Timer.start(talking_time)
+			else:
+				talking_time = rand_range(2,5)
+				$Timer.start(talking_time)
+			
+			self.connect("initiate_talking", get_tree().get_root().get_node("Main").get_node(current_talking_to.name), "initiate_talking", [talking_time])
+			emit_signal("initiate_talking")
+			
+		if(pass_state == state.receive_talking):
+			$AnimatedSprite.play("talking")
+			is_talking = true
+			if talking_time:
+				$Timer.start(talking_time)
+			else:
+				talking_time = rand_range(2,5)
+				$Timer.start(talking_time)		
+			
 func process_states():
 	if(npc_state == state.walking):
 		process_walking()

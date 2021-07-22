@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Winner.mp3-ee5ad1529eef5e1a62fd8c8cdec07265.mp3str"
+
+[deps]
+
+source_file="res://sounds/Winner.mp3"
+dest_files=[ "res://.import/Winner.mp3-ee5ad1529eef5e1a62fd8c8cdec07265.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

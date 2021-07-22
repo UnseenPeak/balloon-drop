@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://textures/cement_placeholder.png" type="Texture" id=1]
 [ext_resource path="res://scenes/npcs/NPC.tscn" type="PackedScene" id=2]
@@ -12,8 +12,6 @@
 [ext_resource path="res://scenes/npcs/ButlerNPC.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Main.gd" type="Script" id=11]
 [ext_resource path="res://textures/RoccStar Art/Game-Tiles_16x16.png" type="Texture" id=12]
-[ext_resource path="res://textures/wet_list.png" type="Texture" id=13]
-[ext_resource path="res://textures/wet_list_text.png" type="Texture" id=14]
 [ext_resource path="res://scenes/npcs/NPC3.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/ButlerSystem.tscn" type="PackedScene" id=17]
 [ext_resource path="res://GameOver.gd" type="Script" id=19]
@@ -141,7 +139,57 @@ points = PoolVector2Array( 0, 16, 0, 16, 16, 0, 16, 16 )
 4/z_index = 0
 
 [sub_resource type="Animation" id=7]
-resource_name = "pulse"
+resource_name = "move_wetlist"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Targets:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.4, 0.4 ), Vector2( 0.15, 0.15 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Targets:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 255, 94 ), Vector2( 342, 231 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HBoxContainer:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 220, 112 ), Vector2( 342, 235 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HBoxContainer:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.75, 1.75 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("CountDown:rect_scale")
@@ -158,8 +206,8 @@ tracks/0/keys = {
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 11 )
-targets = [ ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ) ]
-non_targets = [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 2 ) ]
+targets = [ ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 5 ), ExtResource( 16 ), ExtResource( 2 ), ExtResource( 5 ) ]
+non_targets = [ ExtResource( 2 ) ]
 
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 672, 136 )
@@ -195,7 +243,7 @@ tile_data = PoolIntArray( 852014, 1, 0, 917523, 6, 0, 917524, 4, 0, 917525, 1, 0
 position = Vector2( 300, 36 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 4, 99 )
+position = Vector2( 1, 98 )
 current = true
 limit_left = 0
 limit_top = -100000000
@@ -205,9 +253,6 @@ script = ExtResource( 3 )
 
 [node name="UmbrellaSeating" parent="." instance=ExtResource( 8 )]
 position = Vector2( 88, 208 )
-
-[node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 784, 540 )
 
 [node name="UmbrellaSeating2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 424, 176 )
@@ -228,41 +273,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="WetList"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 328.0
-margin_top = 232.0
-margin_right = 480.0
-margin_bottom = 272.0
-texture = ExtResource( 13 )
-expand = true
+[node name="Targets" type="Label" parent="WetList"]
+margin_left = 255.0
+margin_top = 94.0
+margin_right = 500.0
+margin_bottom = 147.0
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color_shadow = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
+text = "TARGETS"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="WetList/TextureRect"]
-margin_left = 17.0
-margin_top = 3.0
-margin_right = 46.0
-margin_bottom = 12.0
-rect_scale = Vector2( 1.24905, 0.745663 )
-texture = ExtResource( 14 )
-expand = true
+[node name="HBoxContainer" type="HBoxContainer" parent="WetList"]
+margin_left = 220.0
+margin_top = 112.0
+margin_right = 260.0
+margin_bottom = 152.0
+rect_scale = Vector2( 1.75, 1.75 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="WetList/TextureRect"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="WetListAnimation" type="AnimationPlayer" parent="WetList"]
+anims/move_wetlist = SubResource( 7 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="CountDownAnimation" type="AnimationPlayer" parent="GUI"]
-anims/pulse = SubResource( 7 )
+anims/pulse = SubResource( 8 )
 
 [node name="CountDown" type="Label" parent="GUI"]
 margin_left = 444.0
@@ -310,6 +350,8 @@ text = "GAME OVER"
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="IntroTimer" type="Timer" parent="."]
 
 [connection signal="pressed" from="GUI/GameOver/Button" to="GUI/GameOver" method="_on_Button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
