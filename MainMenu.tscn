@@ -1,0 +1,239 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://textures/RoccStar Art/Background_240x135.png" type="Texture" id=1]
+[ext_resource path="res://GameText.tres" type="DynamicFont" id=2]
+[ext_resource path="res://textures/RoccStar Art/Player/idle_with_balloon.png" type="Texture" id=3]
+[ext_resource path="res://textures/balloon_burst.png" type="Texture" id=4]
+[ext_resource path="res://AnimatedSprite.gd" type="Script" id=5]
+[ext_resource path="res://MainMenu.gd" type="Script" id=6]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform float radius = 2.0;
+
+void fragment() {
+	vec4 col = texture(TEXTURE, UV);
+	vec2 ps = TEXTURE_PIXEL_SIZE;
+
+	col += texture(TEXTURE, UV + vec2(0.0, -radius) * ps);
+	col += texture(TEXTURE, UV + vec2(0.0, radius) * ps);
+	col += texture(TEXTURE, UV + vec2(-radius, 0.0) * ps);
+	col += texture(TEXTURE, UV + vec2(radius, 0.0) * ps);
+	col /= 5.0;
+
+	COLOR = col;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/radius = 2.0
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 4 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 5 ), SubResource( 4 ), SubResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=8]
+resource_name = "menu"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 51, 241 ), Vector2( 51, 236 ), Vector2( 51, 241 ), Vector2( 51, 236 ), Vector2( 51, 241 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Title:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 144, 16 ), Vector2( 144, 13 ), Vector2( 144, 16 ) ]
+}
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_left = 133.0
+margin_top = 122.0
+margin_right = 173.0
+margin_bottom = 162.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+self_modulate = Color( 0.745098, 0.780392, 0.831373, 1 )
+material = SubResource( 2 )
+margin_left = -132.0
+margin_top = -120.0
+margin_right = 347.0
+margin_bottom = 149.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+margin_left = 62.0
+margin_top = 96.0
+margin_right = 214.0
+margin_bottom = 155.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 2 )
+text = "PLAY"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 51, 239.337 )
+rotation = -0.345311
+scale = Vector2( 4.6875, 4.6875 )
+texture = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 96, 64 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 7 )
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="CanvasLayer"]
+position = Vector2( 368, 64 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 7 )
+script = ExtResource( 5 )
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+margin_left = 144.0
+margin_top = 10.9979
+margin_right = 389.0
+margin_bottom = 119.998
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "BALLOON
+BONANZA"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+margin_left = 144.0
+margin_top = 112.0
+margin_right = 1159.0
+margin_bottom = 165.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+text = "Move with Keys AD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer"]
+margin_left = 144.0
+margin_top = 128.0
+margin_right = 1159.0
+margin_bottom = 181.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+text = "Fill Balloons at Hose Bib"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="CanvasLayer"]
+margin_left = 144.0
+margin_top = 144.0
+margin_right = 1159.0
+margin_bottom = 197.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+text = "Win by Hitting your Targets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="CanvasLayer"]
+margin_left = 144.0
+margin_top = 160.0
+margin_right = 1159.0
+margin_bottom = 213.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+text = "Lose Time Hitting non Targets"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="CanvasLayer"]
+margin_left = 144.0
+margin_top = 176.0
+margin_right = 1159.0
+margin_bottom = 229.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+text = "Drop Ballons with Space Key"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label9" type="Label" parent="CanvasLayer"]
+margin_left = 144.0
+margin_top = 192.0
+margin_right = 1159.0
+margin_bottom = 245.0
+rect_scale = Vector2( 0.2, 0.2 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+text = "DON'T HIT THE BUTLERS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+anims/menu = SubResource( 8 )
+
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_Button_pressed"]

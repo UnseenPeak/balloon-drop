@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://sounds/drop.mp3" type="AudioStream" id=1]
 [ext_resource path="res://textures/RoccStar Art/balloon_sprite.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sounds/foot_steps.wav" type="AudioStream" id=5]
 [ext_resource path="res://textures/RoccStar Art/Player/Player-Walk-WithBalloon_16x24.png" type="Texture" id=6]
 [ext_resource path="res://textures/RoccStar Art/Player/idle_with_balloon.png" type="Texture" id=7]
+[ext_resource path="res://GameText.tres" type="DynamicFont" id=8]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 3 )
@@ -28,27 +29,27 @@ region = Rect2( 32, 0, 16, 24 )
 atlas = ExtResource( 3 )
 region = Rect2( 48, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 6 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 6 )
-region = Rect2( 32, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 6 )
-region = Rect2( 48, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 16, 24 )
 
-[sub_resource type="SpriteFrames" id=6]
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 16, 24 )
+
+[sub_resource type="SpriteFrames" id=11]
 animations = [ {
 "frames": [ SubResource( 1 ) ],
 "loop": true,
@@ -60,19 +61,48 @@ animations = [ {
 "name": "walk_no_balloon",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
-"loop": true,
-"name": "walk_with_balloon",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 12 ) ],
+"frames": [ SubResource( 6 ) ],
 "loop": true,
 "name": "idle_with_balloon",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "walk_with_balloon",
+"speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 8.02843, 12.0257 )
+
+[sub_resource type="Animation" id=13]
+resource_name = "win"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4.76837e-07 ), Vector2( 0, -10 ), Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -15.0, 0.0, 15.0, 0.0 ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 150, 36 )
@@ -81,11 +111,11 @@ script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 4.76837e-07 )
-frames = SubResource( 6 )
+frames = SubResource( 11 )
 animation = "idle_with_balloon"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 7 )
+shape = SubResource( 12 )
 
 [node name="BalloonHolder" type="Node2D" parent="."]
 position = Vector2( 0, -23 )
@@ -101,3 +131,38 @@ stream = ExtResource( 1 )
 [node name="Footstep" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 volume_db = -16.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/win = SubResource( 13 )
+
+[node name="Control" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control"]
+margin_left = -68.0
+margin_top = -65.0
+margin_right = 212.0
+margin_bottom = -12.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0.0901961, 0.0901961, 0.0901961, 1 )
+text = "YOU WIN!"
+
+[node name="Button" type="Button" parent="Control"]
+margin_left = -19.0
+margin_top = -31.0
+margin_right = 343.0
+margin_bottom = 28.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_Button_pressed"]
