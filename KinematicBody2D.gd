@@ -42,7 +42,7 @@ func _ready():
 	enter_state(state.walking, null)
 	pass
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 #	$Label.text = str(npc_state)
 #	$Label2.text = str(is_talking)
 	process_states()
@@ -55,8 +55,10 @@ func enter_state(pass_state, talking_time):
 	if(pass_state == state.walking):
 		if(rand_range(0,2) > 1):
 			direction = Vector2.LEFT
+			$AnimatedSprite.flip_h = true
 		else:
 			direction = Vector2.RIGHT
+			$AnimatedSprite.flip_h = false
 		$AnimatedSprite.play("walking")
 		$Timer.start(rand_range(2,5))
 		

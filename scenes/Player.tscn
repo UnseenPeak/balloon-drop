@@ -1,23 +1,57 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://sounds/drop.mp3" type="AudioStream" id=1]
 [ext_resource path="res://textures/balloon_placeholder.png" type="Texture" id=2]
-[ext_resource path="res://textures/player_placeholder.png" type="Texture" id=3]
+[ext_resource path="res://textures/RoccStar Art/Player/Player-Walk-NoBalloon_16x24.png" type="Texture" id=3]
 [ext_resource path="res://Player.gd" type="Script" id=4]
 [ext_resource path="res://sounds/foot_steps.wav" type="AudioStream" id=5]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 16, 24 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "Walk_noBalloon",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.02843, 12.0257 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 150, 36 )
+scale = Vector2( 2, 2 )
 collision_mask = 4
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 4.76837e-07 )
-scale = Vector2( 1, 1.5 )
-texture = ExtResource( 3 )
+frames = SubResource( 7 )
+animation = "Walk_noBalloon"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://textures/umbrella.png" type="Texture" id=1]
+[ext_resource path="res://textures/RoccStar Art/Umbrella_16x16.png" type="Texture" id=1]
 [ext_resource path="res://Chair.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -19,8 +19,8 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( 1, 0 )
-scale = Vector2( 1, 0.9375 )
+position = Vector2( 0.647071, 0.194525 )
+scale = Vector2( 1.76471, 0.690221 )
 polygon = PoolVector2Array( -3, -28.3333, -27, -5.93333, 24, -7, 4, -28.3333 )
 
 [node name="Area2D" type="Area2D" parent="." groups=[

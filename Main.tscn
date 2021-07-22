@@ -1,34 +1,39 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://textures/cement_placeholder.png" type="Texture" id=1]
 [ext_resource path="res://scenes/npcs/NPC.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Camera2D.gd" type="Script" id=3]
-[ext_resource path="res://textures/cement_blank_placeholder.png" type="Texture" id=4]
-[ext_resource path="res://textures/cement_party_floor_placeholder.png" type="Texture" id=5]
-[ext_resource path="res://textures/cement_stairs_placeholder.png" type="Texture" id=6]
+[ext_resource path="res://textures/RoccStar Art/Background_240x135.png" type="Texture" id=4]
+[ext_resource path="res://scenes/npcs/NPC2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/HoseBib.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/UmbrellaSeating.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/npcs/ButlerNPC.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Main.gd" type="Script" id=11]
+[ext_resource path="res://textures/RoccStar Art/Game-Tiles_16x16.png" type="Texture" id=12]
 [ext_resource path="res://textures/wet_list.png" type="Texture" id=13]
 [ext_resource path="res://textures/wet_list_text.png" type="Texture" id=14]
 [ext_resource path="res://scenes/npcs/NPC3.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/ButlerSystem.tscn" type="PackedScene" id=17]
 [ext_resource path="res://game_over.png" type="Texture" id=18]
 [ext_resource path="res://GameOver.gd" type="Script" id=19]
-[ext_resource path="res://textures/test_background_again.png" type="Texture" id=20]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
-points = PoolVector2Array( 16, 16, 0, 16, 16, 0, 16, 0 )
+[sub_resource type="ConvexPolygonShape2D" id=8]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 
-[sub_resource type="TileSet" id=4]
+[sub_resource type="ConvexPolygonShape2D" id=9]
+points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( 0, 16, 0, 16, 16, 0, 16, 16 )
+
+[sub_resource type="TileSet" id=6]
 0/name = "cement_placeholder.png 0"
 0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
@@ -50,75 +55,108 @@ points = PoolVector2Array( 16, 16, 0, 16, 16, 0, 16, 0 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
-1/name = "cement_party_floor_placeholder.png 1"
-1/texture = ExtResource( 5 )
+1/name = "Grass-1"
+1/texture = ExtResource( 12 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
-1/region = Rect2( 0, 0, 16, 16 )
+1/region = Rect2( 16, 0, 16, 16 )
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
 1/shape_offset = Vector2( 0, 0 )
 1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 2 )
+1/shape = SubResource( 7 )
 1/shape_one_way = false
 1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
-2/name = "cement_blank_placeholder.png 2"
-2/texture = ExtResource( 4 )
+2/name = "Grass-2"
+2/texture = ExtResource( 12 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
-2/region = Rect2( 0, 0, 16, 16 )
+2/region = Rect2( 32, 0, 16, 16 )
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
 2/shape_offset = Vector2( 0, 0 )
 2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape = SubResource( 8 )
 2/shape_one_way = false
-2/shape_one_way_margin = 0.0
-2/shapes = [  ]
+2/shape_one_way_margin = 1.0
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 8 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
 2/z_index = 0
-3/name = "cement_stairs_placeholder.png 3"
-3/texture = ExtResource( 6 )
+3/name = "Ground"
+3/texture = ExtResource( 12 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
-3/region = Rect2( 0, 0, 16, 16 )
+3/region = Rect2( 48, 0, 16, 16 )
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
 3/shape_offset = Vector2( 0, 0 )
 3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 3 )
+3/shape = SubResource( 9 )
 3/shape_one_way = false
 3/shape_one_way_margin = 1.0
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 3 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 3/z_index = 0
+4/name = "Grass-slope"
+4/texture = ExtResource( 12 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 64, 0, 16, 16 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape = SubResource( 10 )
+4/shape_one_way = false
+4/shape_one_way_margin = 1.0
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 10 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 11 )
 targets = [ ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ), ExtResource( 16 ) ]
-non_targets = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
+non_targets = [ ExtResource( 5 ), ExtResource( 5 ), ExtResource( 5 ), ExtResource( 2 ) ]
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 672, 136 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 781.453, 131.355 )
-scale = Vector2( 1.90228, 1.90228 )
-texture = ExtResource( 20 )
+position = Vector2( 240, 136 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
 
 [node name="TopTileMap" type="TileMap" parent="."]
-tile_set = SubResource( 4 )
+tile_set = SubResource( 6 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_layer = 4
@@ -126,13 +164,14 @@ format = 1
 tile_data = PoolIntArray( 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 196623, 0, 0, 196624, 0, 0, 196625, 0, 0, 196626, 0, 0, 196627, 0, 0, 196628, 0, 0, 196629, 0, 0, 196630, 0, 0, 196631, 0, 0, 196632, 0, 0, 196633, 0, 0, 196634, 0, 0, 196635, 0, 0, 196636, 0, 0, 196637, 0, 0, 196638, 0, 0, 196639, 0, 0, 196640, 0, 0, 196641, 0, 0, 196642, 0, 0, 196643, 0, 0, 196644, 0, 0, 196645, 0, 0, 196646, 0, 0, 196647, 0, 0, 196648, 0, 0, 196649, 0, 0, 196650, 0, 0, 196651, 0, 0, 196652, 0, 0, 196653, 0, 0, 196654, 0, 0 )
 
 [node name="BottomTileMap" type="TileMap" parent="."]
-tile_set = SubResource( 4 )
+tile_set = SubResource( 6 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
+show_collision = true
 collision_layer = 24
 collision_mask = 2
 format = 1
-tile_data = PoolIntArray( 852014, 1, 0, 917523, 3, 0, 917524, 1, 0, 917525, 1, 0, 917526, 1, 0, 917527, 1, 0, 917528, 1, 0, 917529, 1, 0, 917530, 1, 0, 917531, 1, 0, 917532, 1, 0, 917533, 1, 0, 917534, 1, 0, 917535, 1, 0, 917536, 1, 0, 917537, 1, 0, 917538, 1, 0, 917539, 1, 0, 917540, 1, 0, 917541, 1, 0, 917542, 1, 0, 917543, 1, 0, 917544, 1, 0, 917545, 1, 0, 917546, 1, 0, 917547, 1, 0, 917548, 1, 0, 917549, 1, 0, 917550, 1, 0, 1048575, 1, 0, 983058, 3, 0, 983059, 2, 0, 983060, 2, 0, 983061, 2, 0, 983062, 2, 0, 983063, 2, 0, 983064, 2, 0, 983065, 2, 0, 983066, 2, 0, 983067, 2, 0, 983068, 2, 0, 983069, 2, 0, 983070, 2, 0, 983071, 2, 0, 983072, 2, 0, 983073, 2, 0, 983074, 2, 0, 983075, 2, 0, 983076, 2, 0, 983077, 2, 0, 983078, 2, 0, 983079, 2, 0, 983080, 2, 0, 983081, 2, 0, 983082, 2, 0, 983083, 2, 0, 983084, 2, 0, 983085, 2, 0, 983086, 2, 0, 1114111, 1, 0, 1048576, 1, 0, 1048577, 1, 0, 1048578, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 1, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 1, 0, 1048587, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1048595, 1, 0, 1048596, 1, 0, 1048597, 1, 0, 1048598, 1, 0, 1048599, 1, 0, 1048600, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 1048603, 1, 0, 1048604, 1, 0, 1048605, 1, 0, 1048606, 1, 0, 1048607, 2, 0, 1048608, 2, 0, 1048609, 2, 0, 1048610, 2, 0, 1048611, 2, 0, 1048612, 2, 0, 1048613, 2, 0, 1048614, 2, 0, 1048615, 2, 0, 1048616, 2, 0, 1048617, 2, 0, 1048618, 2, 0, 1048619, 2, 0, 1048620, 2, 0, 1048621, 2, 0, 1048622, 2, 0 )
+tile_data = PoolIntArray( 852014, 1, 0, 917523, 6, 0, 917524, 4, 0, 917525, 1, 0, 917526, 1, 0, 917527, 1, 0, 917528, 1, 0, 917529, 1, 0, 917530, 1, 0, 917531, 1, 0, 917532, 1, 0, 917533, 1, 0, 917534, 1, 0, 917535, 1, 0, 917536, 1, 0, 917537, 1, 0, 917538, 1, 0, 917539, 1, 0, 917540, 1, 0, 917541, 1, 0, 917542, 1, 0, 917543, 1, 0, 917544, 1, 0, 917545, 1, 0, 917546, 1, 0, 917547, 1, 0, 917548, 1, 0, 917549, 1, 0, 917550, 3, 0, 1048575, 1, 0, 983058, 6, 0, 983059, 4, 0, 983060, 2, 0, 983061, 3, 0, 983062, 3, 0, 983063, 3, 0, 983064, 3, 0, 983065, 3, 0, 983066, 3, 0, 983067, 3, 0, 983068, 3, 0, 983069, 3, 0, 983070, 3, 0, 983071, 3, 0, 983072, 3, 0, 983073, 3, 0, 983074, 3, 0, 983075, 3, 0, 983076, 3, 0, 983077, 3, 0, 983078, 3, 0, 983079, 3, 0, 983080, 3, 0, 983081, 3, 0, 983082, 3, 0, 983083, 3, 0, 983084, 3, 0, 983085, 3, 0, 983086, 3, 0, 1114111, 3, 0, 1048576, 1, 0, 1048577, 1, 0, 1048578, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 1, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 1, 0, 1048587, 1, 0, 1048588, 1, 0, 1048589, 1, 0, 1048590, 1, 0, 1048591, 1, 0, 1048592, 1, 0, 1048593, 1, 0, 1048594, 1, 0, 1048595, 2, 0, 1048596, 3, 0, 1048597, 3, 0, 1048598, 3, 0, 1048599, 3, 0, 1048600, 3, 0, 1048601, 3, 0, 1048602, 3, 0, 1048603, 3, 0, 1048604, 3, 0, 1048605, 3, 0, 1048606, 3, 0, 1048607, 3, 0, 1048608, 3, 0, 1048609, 3, 0, 1048610, 3, 0, 1048611, 3, 0, 1048612, 3, 0, 1048613, 3, 0, 1048614, 3, 0, 1048615, 3, 0, 1048616, 3, 0, 1048617, 3, 0, 1048618, 3, 0, 1048619, 3, 0, 1048620, 3, 0, 1048621, 3, 0, 1048622, 3, 0 )
 
 [node name="HoseBib" parent="." instance=ExtResource( 7 )]
 
@@ -140,7 +179,7 @@ tile_data = PoolIntArray( 852014, 1, 0, 917523, 3, 0, 917524, 1, 0, 917525, 1, 0
 position = Vector2( 300, 36 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 90, 100 )
+position = Vector2( 2, 54 )
 current = true
 limit_left = 0
 limit_top = -100000000
@@ -149,20 +188,22 @@ smoothing_enabled = true
 script = ExtResource( 3 )
 
 [node name="UmbrellaSeating" parent="." instance=ExtResource( 8 )]
+position = Vector2( 88, 208 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 784, 540 )
 
 [node name="UmbrellaSeating2" parent="." instance=ExtResource( 8 )]
-position = Vector2( 356, 192 )
+position = Vector2( 424, 176 )
 
 [node name="Camera2D2" type="Camera2D" parent="."]
-position = Vector2( 152, 197 )
+position = Vector2( 120, 72 )
 zoom = Vector2( 0.5, 0.5 )
 
 [node name="ButlerNPC" parent="." instance=ExtResource( 10 )]
 
 [node name="ButlerNPC2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 208, 232 )
 
 [node name="ButlerSystem" parent="." instance=ExtResource( 17 )]
 
@@ -180,10 +221,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 315.0
-margin_top = 220.0
-margin_right = 471.0
-margin_bottom = 255.0
+margin_left = 328.0
+margin_top = 232.0
+margin_right = 480.0
+margin_bottom = 272.0
 texture = ExtResource( 13 )
 expand = true
 __meta__ = {
@@ -208,7 +249,6 @@ anchor_bottom = 1.0
 margin_left = 14.0
 margin_top = 8.0
 margin_right = -11.0
-margin_bottom = -7.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 50
