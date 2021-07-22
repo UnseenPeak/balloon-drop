@@ -1,12 +1,15 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
 [ext_resource path="res://textures/RoccStar Art/NPC/NPC-Hit_16x24.png" type="Texture" id=2]
 [ext_resource path="res://textures/RoccStar Art/NPC/NPC-Walk_16x24.png" type="Texture" id=3]
 [ext_resource path="res://textures/npc_sprite_placeholder_single.png.png" type="Texture" id=4]
 [ext_resource path="res://textures/RoccStar Art/NPC/NPC-Talk_16x24.png" type="Texture" id=5]
+[ext_resource path="res://sounds/Hit_v2.mp3" type="AudioStream" id=6]
 [ext_resource path="res://sounds/hit_1.wav" type="AudioStream" id=7]
 [ext_resource path="res://textures/npc_sprite_sitting_placeholder.png" type="Texture" id=8]
+[ext_resource path="res://textures/RoccStar Art/empty_frame.png" type="Texture" id=9]
+[ext_resource path="res://GameText.tres" type="DynamicFont" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 12.6667 )
@@ -16,51 +19,56 @@ atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 8 )
 region = Rect2( 16, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 3 )
-region = Rect2( 32, 0, 16, 24 )
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 3 )
-region = Rect2( 48, 0, 16, 24 )
+atlas = ExtResource( 5 )
+region = Rect2( 16, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 2 )
 region = Rect2( 16, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 5 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=13]
 atlas = ExtResource( 2 )
 region = Rect2( 32, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 2 )
+region = Rect2( 48, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 8, 0, 8, 24 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 16, 24 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
 region = Rect2( 48, 0, 16, 24 )
 
 [sub_resource type="SpriteFrames" id=15]
@@ -70,25 +78,25 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
-"loop": true,
-"name": "walking",
-"speed": 5.0
-}, {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "sitting",
 "speed": 2.0
 }, {
-"frames": [ SubResource( 9 ), SubResource( 10 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
 "name": "talking",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 18 ), SubResource( 10 ), SubResource( 18 ), SubResource( 10 ), SubResource( 18 ), SubResource( 10 ), SubResource( 18 ), SubResource( 10 ), SubResource( 18 ), SubResource( 10 ), SubResource( 18 ), SubResource( 10 ), SubResource( 18 ) ],
 "loop": false,
 "name": "hit",
 "speed": 12.0
+}, {
+"frames": [ SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "walking",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=16]
@@ -121,6 +129,33 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=19]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Time:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Time:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
 [node name="KinematicBody2D" type="KinematicBody2D" groups=[
 "npc",
 ]]
@@ -129,9 +164,6 @@ scale = Vector2( 2, 2 )
 collision_layer = 18
 collision_mask = 8
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Area2D" type="Area2D" parent="."]
 gravity = 0.0
@@ -183,7 +215,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+pitch_scale = 1.3
+
+[node name="HitTimer" type="Timer" parent="."]
+
+[node name="Time" type="Node2D" parent="."]
+
+[node name="ShowTime" type="Label" parent="Time"]
+visible = false
+margin_left = -5.0
+margin_top = -25.8545
+margin_right = 135.0
+margin_bottom = 27.1455
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/font = ExtResource( 10 )
+text = "-5s "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowTimeText" type="Label" parent="Time"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.996586 )
+margin_left = -7.0
+margin_top = -29.0
+margin_right = 413.0
+margin_bottom = 80.0
+rect_scale = Vector2( 0.04, 0.04 )
+custom_fonts/font = ExtResource( 10 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "WRONG TARGET
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShowTimeAnimation" type="AnimationPlayer" parent="."]
+anims/fade = SubResource( 19 )
+
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area2D" to="." method="_on_Area2D_area_shape_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_HitTimer_timeout"]

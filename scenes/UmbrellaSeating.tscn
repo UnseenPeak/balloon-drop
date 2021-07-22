@@ -10,9 +10,6 @@ extents = Vector2( 0, 9 )
 position = Vector2( 114, 224 )
 collision_layer = 16
 collision_mask = 32
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
@@ -26,7 +23,7 @@ polygon = PoolVector2Array( -3, -28.3333, -27, -5.93333, 24, -7, 4, -28.3333 )
 [node name="Area2D" type="Area2D" parent="." groups=[
 "seat",
 ]]
-position = Vector2( -97, -112 )
+position = Vector2( -77, -103 )
 collision_layer = 8
 collision_mask = 32
 script = ExtResource( 2 )
@@ -36,6 +33,7 @@ position = Vector2( 113, 133 )
 shape = SubResource( 1 )
 
 [node name="Label" type="Label" parent="Area2D"]
+visible = false
 margin_left = 78.0
 margin_top = 60.0
 margin_right = 118.0
@@ -47,8 +45,7 @@ __meta__ = {
 [node name="Area2D2" type="Area2D" parent="." groups=[
 "seat",
 ]]
-visible = false
-position = Vector2( -97, -112 )
+position = Vector2( -118, -107 )
 collision_layer = 8
 collision_mask = 32
 script = ExtResource( 2 )
@@ -58,6 +55,7 @@ position = Vector2( 82, 135 )
 shape = SubResource( 1 )
 
 [node name="Label" type="Label" parent="Area2D2"]
+visible = false
 margin_left = 78.0
 margin_top = 60.0
 margin_right = 118.0
