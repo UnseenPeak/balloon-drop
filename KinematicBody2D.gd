@@ -69,7 +69,6 @@ func enter_state(pass_state, talking_time):
 			$Timer.start(5)
 			$AudioStreamPlayer2D.stream = all_hit_sounds[randi() % all_hit_sounds.size()]
 			$AudioStreamPlayer2D.play()
-			print(game_manager.toast_height)
 			if is_target:		
 				$HitTimer.start(.3)
 				$Time/ShowTime.text = str("")

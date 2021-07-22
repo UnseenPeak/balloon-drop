@@ -71,7 +71,7 @@ func _process(delta):
 	velocity.x = lerp(velocity.x, 0, 0.25)
 	#	How to get window with, not stretch window width?
 	#	change clam value to variable instead
-	position.x = clamp(position.x, 8, 820)
+	position.x = clamp(position.x, 8, 748)
 
 
 func _on_Button_pressed():

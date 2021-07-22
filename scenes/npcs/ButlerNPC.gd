@@ -117,7 +117,7 @@ func process_walking():
 	
 func initiate_talking(time):
 	enter_state(state.receive_talking, time)
-	
+	 
 func _on_Area2D_body_entered(body):
 	if(body.name == "Balloon"):
 		print('BUTLER HIT')
