@@ -5,11 +5,13 @@ export(Array, PackedScene) var non_targets
 
 var wet_list_target = preload("res://scenes/WetListTarget.tscn")
 var game_manager
+var count_down
 
 func _ready():
 	spawn_targets()
 	spawn_non_targets()
 	game_manager = get_tree().get_root().get_node("GameManager")
+	count_down = get_node("GUI/CountDown")
 
 func target_hit(npc_id):
 	game_manager.inc_time()
@@ -24,9 +26,15 @@ func remove_target(npc_id):
 	pass
 
 func _process(_delta):
+	if game_manager.seconds <= 10:
+		$GUI/CountDownAnimation.play("pulse")
+		count_down.modulate = Color(1,0,0)
+	else:
+		$GUI/CountDownAnimation.stop(false)
+		count_down.modulate = Color(1,1,1)
+		count_down.rect_scale = Vector2(.3,.3)
 	if !game_manager.is_game_over:
-		get_node("GUI/Label").text = str(game_manager.seconds)
-	pass
+		count_down.text = str(game_manager.seconds)
 
 func spawn_non_targets():
 	var non_target

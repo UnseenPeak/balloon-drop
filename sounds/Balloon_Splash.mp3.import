@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Balloon_Splash.mp3-2019942c2cc0628a6d1816a8a9d562a8.mp3str"
+
+[deps]
+
+source_file="res://sounds/Balloon_Splash.mp3"
+dest_files=[ "res://.import/Balloon_Splash.mp3-2019942c2cc0628a6d1816a8a9d562a8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

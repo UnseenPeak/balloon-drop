@@ -10,6 +10,7 @@ signal balloon_filled
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite.play('drip')
 	pass # Replace with function body.
 
 func _process(delta):
@@ -34,12 +35,14 @@ func _process(delta):
 
 
 func _on_HoseBib_body_entered(body):
+	$AnimatedSprite.play('filling')
 	filling = true
 	$Label.visible = true
 	
 
 
 func _on_HoseBib_body_exited(body):
+	$AnimatedSprite.play('drip')
 	filling = false
 	fill = 0
 	$Label.visible = false

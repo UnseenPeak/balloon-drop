@@ -10,7 +10,6 @@ enum state{
 
 func locate_butler(pos):
 	var all_butlers = get_tree().get_nodes_in_group("butler")
-	print(all_butlers)
 	
 	var nearest_butler = all_butlers[0]
 

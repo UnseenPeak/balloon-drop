@@ -19,10 +19,10 @@ func _process(_delta):
 	time_now = OS.get_unix_time()
 	elapsed = time_now - time_start
 	if !is_game_over:
-		seconds = 20 - elapsed
+		seconds = 12 - elapsed
 	if seconds <= 0 || is_game_over:
 		_game_over_screen()
-	elif seconds <= 5:
+	elif seconds <= 10:
 		if $MusicPlayer.pitch_scale > 1.1 && $MusicPlayer.pitch_scale < 1.3:
 			$MusicPlayer.pitch_scale += 0.001
 		
@@ -39,6 +39,7 @@ func _game_over_screen():
 	if $MusicPlayer.pitch_scale <= 0.25:
 		$MusicPlayer.volume_db = -80
 	is_game_over = true
+	Engine.time_scale = 0.2
 
 func inc_time():
 	time_start = time_start + 5.0
@@ -54,6 +55,7 @@ func reset_game():
 	seconds = 60
 	time_now = OS.get_unix_time()
 	time_start = OS.get_unix_time()
+	Engine.time_scale = 1
 	$MusicPlayer.volume_db = 0
 	$MusicPlayer.pitch_scale = 1
 	$MusicPlayer.play()

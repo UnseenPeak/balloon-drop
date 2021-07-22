@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Game-Tiles_16x16.png-4d49de9e029202a15f67ebe78479c77d.stex"
+path="res://.import/balloon_sprite.png-07cb33663168c61a7922083074ebe923.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/RoccStar Art/Game-Tiles_16x16.png"
-dest_files=[ "res://.import/Game-Tiles_16x16.png-4d49de9e029202a15f67ebe78479c77d.stex" ]
+source_file="res://textures/RoccStar Art/balloon_sprite.png"
+dest_files=[ "res://.import/balloon_sprite.png-07cb33663168c61a7922083074ebe923.stex" ]
 
 [params]
 

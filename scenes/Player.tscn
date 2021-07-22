@@ -6,55 +6,54 @@
 [ext_resource path="res://Player.gd" type="Script" id=4]
 [ext_resource path="res://sounds/foot_steps.wav" type="AudioStream" id=5]
 
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 16, 24 )
+
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 16, 24 )
+region = Rect2( 16, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 3 )
-region = Rect2( 16, 0, 16, 24 )
+region = Rect2( 32, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 3 )
-region = Rect2( 32, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 3 )
 region = Rect2( 48, 0, 16, 24 )
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 2 ) ],
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
 "loop": true,
-"name": "Walk_noBalloon",
-"speed": 5.0
+"name": "walk_no_balloon",
+"speed": 15.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 8.02843, 12.0257 )
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 150, 36 )
-scale = Vector2( 2, 2 )
 collision_mask = 4
 script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 4.76837e-07 )
-frames = SubResource( 7 )
-animation = "Walk_noBalloon"
+frames = SubResource( 6 )
+animation = "walk_no_balloon"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 
 [node name="BalloonHolder" type="Node2D" parent="."]
 position = Vector2( 0, -23 )

@@ -66,12 +66,22 @@ func enter_state(pass_state, talking_time):
 		$AnimatedSprite.play("idle")
 		
 	if(pass_state == state.wet):
+		print('wet!')
 		$Timer.start(5)
 		$AudioStreamPlayer2D.stream = all_hit_sounds[randi() % all_hit_sounds.size()]
 		$AudioStreamPlayer2D.play()
+		if is_target:		
+#			$Hit.play()
+			$ShowTime.text = str("+5s")
+			$ShowTime.modulate = Color(.2,.9,.2)
+		else:
+			$ShowTime.modulate = Color(.9,.2,.2)
+		$ShowTime.visible = true
 		$AnimationPlayer.play("hit")
 		$AnimatedSprite.play("hit")
+		$ShowTimeAnimation.play("fade")
 		yield($AnimatedSprite, "animation_finished" )
+		$ShowTime.visible = false
 		queue_free()
 		
 	if(pass_state == state.sitting):
@@ -129,6 +139,7 @@ func _on_Area2D_body_entered(body):
 	if(body.name == "Balloon"):
 		if is_target:
 			emit_signal("target_hit")
+#			get_tree().get_root().get_node("Main").get_node("Hit").play()
 		else:
 			game_manager.dec_time()
 		self.connect("locate_closets_butler", get_tree().get_root().get_node("Main").get_node("ButlerSystem"), "locate_butler", [global_position])
