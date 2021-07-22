@@ -30,14 +30,18 @@ func _process(delta):
 	if !game_manager.is_game_over:
 		if Input.is_action_pressed("right"):
 			$AnimatedSprite.flip_h = false
-			if !has_balloon:
+			if has_balloon:
+				$AnimatedSprite.play("walk_with_balloon")
+			else:
 				$AnimatedSprite.play("walk_no_balloon")
 			velocity.x = SPEED
 			if not $Footstep.is_playing():
 				$Footstep.play()
 		elif Input.is_action_pressed("left"):
 			$AnimatedSprite.flip_h = true
-			if !has_balloon:
+			if has_balloon:
+				$AnimatedSprite.play("walk_with_balloon")
+			else:
 				$AnimatedSprite.play("walk_no_balloon")
 			velocity.x = -SPEED
 			if not $Footstep.is_playing():
@@ -53,7 +57,10 @@ func _process(delta):
 			has_balloon = false
 			emit_signal("balloon_released")
 		else:
-			$AnimatedSprite.play("idle")
+			if has_balloon:
+				$AnimatedSprite.play("idle_with_balloon")
+			else:
+				$AnimatedSprite.play("idle")
 		velocity = move_and_slide(velocity, Vector2.UP)
 	
 	velocity.x = lerp(velocity.x, 0, 0.25)

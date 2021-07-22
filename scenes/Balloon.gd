@@ -24,7 +24,6 @@ func _process(_delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func balloon_explode():
-	print('explode!')
 	velocity = Vector2(0,0)
 	$Sprite.visible = false
 	$AnimatedSprite.play("explode")

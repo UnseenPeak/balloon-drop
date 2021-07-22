@@ -9,6 +9,7 @@ var time_now = 0
 var time_left = 60
 var elapsed
 var seconds = 60
+var toast_height = 0
 
 func _ready():
 	time_start = OS.get_unix_time()
@@ -43,10 +44,17 @@ func _game_over_screen():
 
 func inc_time():
 	time_start = time_start + 5.0
+	toast_stagger()
 	
 func dec_time():
 	time_start = time_start - 5.0
+	toast_stagger()
 
+func toast_stagger():
+#	if toast_height >= 30:
+#		toast_height = 0
+	toast_height = toast_height + 30
+	
 func reset_game():
 	non_targets_hit = 0
 	butler_hit = 0

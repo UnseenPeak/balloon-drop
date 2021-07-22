@@ -12,6 +12,7 @@ enum state{
 var is_talking = false
 var is_sitting = false
 var is_target = false
+var hit_played = false
 var speed = 50
 var direction = Vector2.LEFT
 var velocity = Vector2(0,0)
@@ -66,22 +67,26 @@ func enter_state(pass_state, talking_time):
 		$AnimatedSprite.play("idle")
 		
 	if(pass_state == state.wet):
-		print('wet!')
 		$Timer.start(5)
 		$AudioStreamPlayer2D.stream = all_hit_sounds[randi() % all_hit_sounds.size()]
 		$AudioStreamPlayer2D.play()
+		print(game_manager.toast_height)
 		if is_target:		
-#			$Hit.play()
-			$ShowTime.text = str("+5s")
-			$ShowTime.modulate = Color(.2,.9,.2)
+			$HitTimer.start(.3)
+			$Time/ShowTime.text = str("+5s")
+			$Time/ShowTimeText.text = str("CORRECT TARGET")
+			$Time/ShowTime.modulate = Color(.2,.9,.2)
+			$Time/ShowTimeText.modulate = Color(.2,.9,.2)
 		else:
-			$ShowTime.modulate = Color(.9,.2,.2)
-		$ShowTime.visible = true
+			$Time/ShowTime.modulate = Color(.9,.2,.2)
+			$Time/ShowTimeText.modulate = Color(.9,.2,.2)
+		$Time/ShowTime.visible = true
+		$Time/ShowTimeText.visible = true
 		$AnimationPlayer.play("hit")
 		$AnimatedSprite.play("hit")
 		$ShowTimeAnimation.play("fade")
 		yield($AnimatedSprite, "animation_finished" )
-		$ShowTime.visible = false
+		$Time/ShowTime.visible = false
 		queue_free()
 		
 	if(pass_state == state.sitting):
@@ -174,3 +179,9 @@ func _on_Timer_timeout():
 	enter_state(state.values()[randi()%2], null)
 	pass
 
+
+
+func _on_HitTimer_timeout():
+	if !hit_played:
+		$Hit.play()
+		hit_played = true
