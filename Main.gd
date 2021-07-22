@@ -75,19 +75,14 @@ func spawn_npcs():
 		non_target = targets[n].instance()
 		add_child(non_target)
 
-	if(rand_range(0,2) > 1):
-		non_target.position = Vector2(rand_range(12,276), 232)
-	else:
 		non_target.position = Vector2(rand_range(330,820), 205)
 
 	for n in targets.size():
 		non_target = targets[n].instance()
 		add_child(non_target)
 
-	if(rand_range(0,2) > 1):
 		non_target.position = Vector2(rand_range(12,276), 232)
-	else:
-		non_target.position = Vector2(rand_range(330,820), 205)
+
 
 #func spawn_non_targets():
 #	var non_target
