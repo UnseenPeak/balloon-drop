@@ -53,16 +53,14 @@ func spawn_npcs():
 	randomize()
 	targets.shuffle()
 	for i in 5:
-		print(i)
 		target = targets[i].instance()
 		add_child(target)
 		target.is_target = true
-		
 		if(rand_range(0,2) > 1):
 			target.position = Vector2(rand_range(12,276), 238)
 		else:
-			target.global_position = Vector2(rand_range(330,820), 205)
-
+			target.global_position = Vector2(rand_range(330,710), 205)
+		
 		var text_rect = wet_list_target.instance()
 		text_rect.texture = target.get_node("Sprite").texture
 		text_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -72,57 +70,57 @@ func spawn_npcs():
 		$WetList/HBoxContainer.add_child(text_rect)
 		targets.remove(0)
 	
-#	var non_target
-#	for n in targets.size():
-#		non_target = targets[n].instance()
-#		add_child(non_target)
-#
-#	if(rand_range(0,2) > 1):
-#		non_target.position = Vector2(rand_range(12,276), 232)
-#	else:
-#		non_target.position = Vector2(rand_range(330,820), 205)
-#
-#	for n in targets.size():
-#		non_target = targets[n].instance()
-#		add_child(non_target)
-#
-#	if(rand_range(0,2) > 1):
-#		non_target.position = Vector2(rand_range(12,276), 232)
-#	else:
-#		non_target.position = Vector2(rand_range(330,820), 205)
-
-func spawn_non_targets():
 	var non_target
-	for i in 10:
-		for n in non_targets.size():
-			non_target = non_targets[n].instance()
-			add_child(non_target)
-		
-		if(rand_range(0,2) > 1):
-			non_target.position = Vector2(rand_range(12,276), 232)
-		else:
-			non_target.position = Vector2(rand_range(330,820), 205)
+	for n in targets.size():
+		non_target = targets[n].instance()
+		add_child(non_target)
 
-func spawn_targets():
-	var target
-	for i in targets.size():
-		print(i)
-		target = targets[i].instance()
-		add_child(target)
-		target.is_target = true
-		
-		if(rand_range(0,2) > 1):
-			target.position = Vector2(rand_range(12,276), 238)
-		else:
-			target.global_position = Vector2(rand_range(330,820), 205)
+	if(rand_range(0,2) > 1):
+		non_target.position = Vector2(rand_range(12,276), 232)
+	else:
+		non_target.position = Vector2(rand_range(330,820), 205)
 
-		var text_rect = wet_list_target.instance()
-		text_rect.texture = target.get_node("Sprite").texture
-		text_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		text_rect.visible = false
-		call_deferred("set",text_rect.rect_scale, Vector2(2,2))
-		text_rect.target_id = target.get_instance_id()
-		$WetList/HBoxContainer.add_child(text_rect)
+	for n in targets.size():
+		non_target = targets[n].instance()
+		add_child(non_target)
+
+	if(rand_range(0,2) > 1):
+		non_target.position = Vector2(rand_range(12,276), 232)
+	else:
+		non_target.position = Vector2(rand_range(330,820), 205)
+
+#func spawn_non_targets():
+#	var non_target
+#	for i in 10:
+#		for n in non_targets.size():
+#			non_target = non_targets[n].instance()
+#			add_child(non_target)
+#
+#		if(rand_range(0,2) > 1):
+#			non_target.position = Vector2(rand_range(12,276), 232)
+#		else:
+#			non_target.position = Vector2(rand_range(330,820), 205)
+#
+#func spawn_targets():
+#	var target
+#	for i in targets.size():
+#		print(i)
+#		target = targets[i].instance()
+#		add_child(target)
+#		target.is_target = true
+#
+#		if(rand_range(0,2) > 1):
+#			target.position = Vector2(rand_range(12,276), 238)
+#		else:
+#			target.global_position = Vector2(rand_range(330,820), 205)
+#
+#		var text_rect = wet_list_target.instance()
+#		text_rect.texture = target.get_node("Sprite").texture
+#		text_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+#		text_rect.visible = false
+#		call_deferred("set",text_rect.rect_scale, Vector2(2,2))
+#		text_rect.target_id = target.get_instance_id()
+#		$WetList/HBoxContainer.add_child(text_rect)
 
 func show_targets():
 	for i in targets.size() - 1:

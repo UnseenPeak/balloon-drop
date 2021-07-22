@@ -22,7 +22,6 @@ func _ready():
 	set_process(true)
 
 func _process(_delta):
-	print(target_count)
 	if !is_intro && !is_game_won:
 		time_now = OS.get_unix_time()
 		elapsed = time_now - time_start
