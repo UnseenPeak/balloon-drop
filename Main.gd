@@ -16,23 +16,24 @@ func target_hit(npc_id):
 	remove_target(npc_id)
 
 func remove_target(npc_id):
-	var targets = get_tree().get_nodes_in_group("WetListTargets")
+	targets = get_tree().get_nodes_in_group("WetListTargets")
 	for i in range(targets.size()):
 		if targets[i].target_id == npc_id:
 			targets[i].modulate.a = 0.3
 			break;
 	pass
 
-func _process(delta):
+func _process(_delta):
 	if !game_manager.is_game_over:
 		get_node("GUI/Label").text = str(game_manager.seconds)
 	pass
 
 func spawn_non_targets():
 	var non_target
-	for i in 12:
-		non_target = non_targets[0].instance()
-		add_child(non_target)
+	for i in 2:
+		for n in non_targets.size():
+			non_target = non_targets[n].instance()
+			add_child(non_target)
 		
 		if(rand_range(0,2) > 1):
 			non_target.position = Vector2(rand_range(12,276), 238)

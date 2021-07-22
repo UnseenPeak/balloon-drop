@@ -31,11 +31,11 @@ func _ready():
 	enter_state(state.walking, null)
 	pass
 	
-func _physics_process(delta):
+func _physics_process(_delta):
 	$Label.text = str(speed)
 	process_states()
 	
-func enter_state(pass_state, talking_time):
+func enter_state(pass_state, _talking_time):
 	
 	if(npc_state != pass_state):
 		leave_state(npc_state)
@@ -83,7 +83,7 @@ func process_states():
 		process_alert()
 	pass
 
-func leave_state(pass_state):
+func leave_state(_pass_state):
 #	if(pass_state == state.alert):
 #		$AlertSprite.visible = false
 #		$AnimationAlert.stop()

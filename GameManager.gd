@@ -15,7 +15,7 @@ func _ready():
 	set_process(true)
 	$MusicPlayer.play()
 
-func _process(delta):
+func _process(_delta):
 	time_now = OS.get_unix_time()
 	elapsed = time_now - time_start
 	if !is_game_over:

@@ -8,7 +8,7 @@ func _ready():
 	game_manager = get_tree().get_root().get_node("GameManager")
 	thrown = false
 
-func _process(delta):
+func _process(_delta):
 #	or comes in contact with NPC
 	if is_on_floor():
 		balloon_explode()
@@ -42,7 +42,7 @@ func _on_Area2D_area_entered(area):
 
 
 
-func _on_Area2D_body_entered(body):
+func _on_Area2D_body_entered(_body):
 	pass
 #	$CollisionShape2D.set_deferred("disabled", true)
 #	$CollisionShape2D.set_deferred("Area2D/CollisionShape2D2", true)
