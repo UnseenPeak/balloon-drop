@@ -10,7 +10,7 @@ var time_start = 0
 var time_now = 0
 var time_left = 45
 var elapsed
-var seconds = 45
+var seconds = 50
 var toast_height = 0
 var target_count = 0
 
@@ -83,7 +83,7 @@ func reset_game():
 	butler_hit = 0
 	get_tree().reload_current_scene()
 	is_game_over = false
-	seconds = 45
+	seconds = 50
 	time_now = OS.get_unix_time()
 	time_start = OS.get_unix_time()
 	Engine.time_scale = 1

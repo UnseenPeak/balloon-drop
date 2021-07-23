@@ -1,11 +1,11 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
-[ext_resource path="res://textures/RoccStar Art/NPC/NPC-Walk-2_16x24.png" type="Texture" id=2]
-[ext_resource path="res://textures/RoccStar Art/NPC/NPC-Talk-2_16x24.png" type="Texture" id=3]
-[ext_resource path="res://textures/RoccStar Art/NPC/NPC-1-Sit2_16x24.png" type="Texture" id=4]
-[ext_resource path="res://textures/RoccStar Art/NPC/NPC-Hit-2_16x24.png" type="Texture" id=5]
-[ext_resource path="res://textures/RoccStar Art/NPC/NPC-5_16x24_idle.png" type="Texture" id=6]
+[ext_resource path="res://textures/RoccStar Art/NPC/NPC-Hit-2_16x24.png" type="Texture" id=2]
+[ext_resource path="res://textures/RoccStar Art/NPC/NPC-6_16x24.png" type="Texture" id=3]
+[ext_resource path="res://textures/RoccStar Art/NPC/NPC-2-Sit2_16x24.png" type="Texture" id=4]
+[ext_resource path="res://textures/RoccStar Art/NPC/NPC-Walk-2_16x24.png" type="Texture" id=5]
+[ext_resource path="res://textures/RoccStar Art/NPC/NPC-Talk-2_16x24.png" type="Texture" id=6]
 [ext_resource path="res://sounds/hit_1.wav" type="AudioStream" id=7]
 [ext_resource path="res://sounds/Hit_v2.mp3" type="AudioStream" id=8]
 [ext_resource path="res://textures/RoccStar Art/empty_frame.png" type="Texture" id=9]
@@ -15,59 +15,47 @@
 extents = Vector2( 9, 12.6667 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 2 )
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 16, 24 )
+atlas = ExtResource( 5 )
+region = Rect2( 0, 24, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 2 )
-region = Rect2( 16, 0, 16, 24 )
+atlas = ExtResource( 5 )
+region = Rect2( 16, 24, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 2 )
-region = Rect2( 32, 0, 16, 24 )
+atlas = ExtResource( 5 )
+region = Rect2( 32, 24, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 2 )
-region = Rect2( 48, 0, 16, 24 )
+atlas = ExtResource( 5 )
+region = Rect2( 48, 24, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 16, 24 )
+atlas = ExtResource( 6 )
+region = Rect2( 0, 24, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 3 )
-region = Rect2( 16, 0, 16, 24 )
+atlas = ExtResource( 6 )
+region = Rect2( 16, 24, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 5 )
-region = Rect2( 0, 0, 16, 24 )
+atlas = ExtResource( 2 )
+region = Rect2( 48, 24, 16, 24 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 5 )
-region = Rect2( 16, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 5 )
-region = Rect2( 32, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 5 )
-region = Rect2( 48, 0, 16, 24 )
-
-[sub_resource type="AtlasTexture" id=14]
 flags = 4
 atlas = ExtResource( 9 )
-region = Rect2( 8, 0, 8, 12 )
+region = Rect2( 8, 6, 4, 6 )
 
-[sub_resource type="SpriteFrames" id=15]
+[sub_resource type="SpriteFrames" id=12]
 animations = [ {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
@@ -89,16 +77,16 @@ animations = [ {
 "name": "talking",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 13 ), SubResource( 14 ), SubResource( 13 ), SubResource( 14 ), SubResource( 13 ), SubResource( 14 ), SubResource( 13 ), SubResource( 14 ), SubResource( 13 ), SubResource( 14 ), SubResource( 13 ), SubResource( 14 ), SubResource( 13 ), SubResource( 14 ) ],
+"frames": [ SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 10 ), SubResource( 11 ), SubResource( 10 ), SubResource( 11 ), SubResource( 10 ), SubResource( 11 ), SubResource( 10 ), SubResource( 11 ), SubResource( 10 ), SubResource( 11 ), SubResource( 10 ), SubResource( 11 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": false,
 "name": "hit",
 "speed": 12.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=16]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 6.16168, 12 )
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=14]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
@@ -125,7 +113,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -10 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=15]
 resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Time:position")
@@ -171,7 +159,7 @@ position = Vector2( 0, -0.6 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 15 )
+frames = SubResource( 12 )
 animation = "walking"
 
 [node name="Timer" type="Timer" parent="."]
@@ -179,18 +167,18 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.204, 0.01 )
-shape = SubResource( 16 )
+shape = SubResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-texture = ExtResource( 6 )
+texture = ExtResource( 3 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 7 )
 pitch_scale = 1.16
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/hit = SubResource( 17 )
+anims/hit = SubResource( 14 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -18.0
@@ -250,7 +238,7 @@ __meta__ = {
 }
 
 [node name="ShowTimeAnimation" type="AnimationPlayer" parent="."]
-anims/fade = SubResource( 18 )
+anims/fade = SubResource( 15 )
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area2D" to="." method="_on_Area2D_area_shape_exited"]

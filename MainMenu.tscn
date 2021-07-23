@@ -149,7 +149,7 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 51, 239.952 )
+position = Vector2( 51, 240.818 )
 rotation = -0.345311
 scale = Vector2( 4.6875, 4.6875 )
 texture = ExtResource( 3 )
@@ -167,16 +167,16 @@ frames = SubResource( 7 )
 script = ExtResource( 5 )
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="CanvasLayer"]
-position = Vector2( 422, 250.048 )
+position = Vector2( 422, 249.182 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 10 )
 flip_h = true
 
 [node name="Title" type="Label" parent="CanvasLayer"]
 margin_left = 144.0
-margin_top = 13.3145
+margin_top = 13.0546
 margin_right = 389.0
-margin_bottom = 122.315
+margin_bottom = 122.055
 rect_scale = Vector2( 0.75, 0.75 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

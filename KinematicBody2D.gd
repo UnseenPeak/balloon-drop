@@ -128,8 +128,10 @@ func process_walking():
 	velocity.x = lerp(velocity.x, 0, 0.25)
 	if(is_on_wall()):
 		if direction == Vector2.LEFT:
+			get_node( "AnimatedSprite" ).set_flip_h( false )
 			direction = Vector2.RIGHT
 		else:
+			get_node( "AnimatedSprite" ).set_flip_h( true )
 			direction = Vector2.LEFT
 	pass
 	
