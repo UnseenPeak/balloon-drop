@@ -75,7 +75,7 @@ func spawn_npcs():
 		non_target = targets[n].instance()
 		add_child(non_target)
 
-		non_target.position = Vector2(rand_range(330,820), 205)
+		non_target.position = Vector2(rand_range(330,710), 205)
 
 	for n in targets.size():
 		non_target = targets[n].instance()
@@ -88,6 +88,12 @@ func spawn_npcs():
 		add_child(non_target)
 
 		non_target.position = Vector2(rand_range(12,276), 232)
+
+	for n in targets.size():
+		non_target = targets[n].instance()
+		add_child(non_target)
+
+		non_target.position = Vector2(rand_range(330,710), 205)
 
 func show_targets():
 	for i in targets.size() - 1:

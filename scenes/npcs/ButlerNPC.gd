@@ -93,7 +93,7 @@ func leave_state(_pass_state):
 func process_alert():
 	velocity = direction * (speed + 20);
 	velocity.y = 60
-	if abs(alert_location.x - position.x) < 25:
+	if abs(alert_location.x - position.x) < 32:
 		enter_state(state.idle, null)
 		$AlertSprite.visible = false
 		$AnimationAlert.stop()

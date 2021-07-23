@@ -30,9 +30,9 @@ func _process(delta):
 	else:
 #		smoothing_enabled = false
 		var player_pos = get_tree().get_root().get_node("Main/Player").get_global_position()
-		set_global_position(lerp(get_global_position(), Vector2(player_pos.x, 15), delta*5))
+		set_global_position(lerp(get_global_position(), Vector2(player_pos.x, 15), delta))
 		if zoom.x > .4:
-			zoom += Vector2(-.005, -.005)
+			zoom += Vector2(-.002, -.002)
 func follow_balloon():
 	follow = true
 	target = get_tree().get_root().get_node("Main").get_node("Balloon")

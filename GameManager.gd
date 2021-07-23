@@ -16,9 +16,9 @@ var target_count = 0
 
 func load_game():
 	get_tree().change_scene("res://Main.tscn")
+	time_start = OS.get_unix_time()
 
 func _ready():
-	time_start = OS.get_unix_time()
 	set_process(true)
 
 func _process(_delta):

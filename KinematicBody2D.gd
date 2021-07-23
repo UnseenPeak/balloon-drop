@@ -71,8 +71,8 @@ func enter_state(pass_state, talking_time):
 			$AudioStreamPlayer2D.play()
 			if is_target:		
 				$HitTimer.start(.3)
-				$Time/ShowTime.text = str("")
-				$Time/ShowTimeText.text = str("CORRECT TARGET")
+				$Time/ShowTime.text = str("CORRECT\n TARGET")
+				$Time/ShowTimeText.text = str("Perfect!")
 				$Time/ShowTime.modulate = Color(.2,.9,.2)
 				$Time/ShowTimeText.modulate = Color(.2,.9,.2)
 			else:
@@ -123,7 +123,7 @@ func leave_state(pass_state):
 	
 func process_walking():
 	velocity = direction * speed;
-	velocity.y = 30
+	velocity.y = 40
 	velocity = move_and_slide(velocity, Vector2.UP, true)
 	velocity.x = lerp(velocity.x, 0, 0.25)
 	if(is_on_wall()):
