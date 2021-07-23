@@ -27,7 +27,6 @@ func get_balloon():
 	$BalloonHolder.get_node("Sprite").visible = true
 
 func _process(delta):
-#	get_tree().get_root().get_node("Main").get_node("WetList").visible = false
 	$Footstep.pitch_scale = rng.randf_range(0.98, 1.2) 
 	if !game_manager.is_game_over && !game_manager.is_intro && !game_manager.is_game_won:
 		if Input.is_action_pressed("right"):
@@ -48,8 +47,6 @@ func _process(delta):
 			velocity.x = -SPEED
 			if not $Footstep.is_playing():
 				$Footstep.play()
-#		if Input.is_action_pressed("tab"):
-#			get_tree().get_root().get_node("Main").get_node("WetList").visible = true
 		elif Input.is_action_pressed("drop") && has_balloon:
 			$AudioStreamPlayer2D.play()
 			var new_balloon = balloon.instance()

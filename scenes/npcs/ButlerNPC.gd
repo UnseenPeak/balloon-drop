@@ -93,7 +93,7 @@ func leave_state(_pass_state):
 func process_alert():
 	velocity = direction * (speed + 20);
 	velocity.y = 60
-	if abs(alert_location.x - position.x) < 18:
+	if abs(alert_location.x - position.x) < 25:
 		enter_state(state.idle, null)
 		$AlertSprite.visible = false
 		$AnimationAlert.stop()
@@ -120,7 +120,6 @@ func initiate_talking(time):
 	 
 func _on_Area2D_body_entered(body):
 	if(body.name == "Balloon"):
-		print('BUTLER HIT')
 		game_manager.butler_hit = true
 		enter_state(state.wet, null)
 
